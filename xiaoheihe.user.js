@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小黑盒网页社区优化 - 高信息密度版
 // @namespace    http://tampermonkey.net/
-// @version      2.1.1
+// @version      2.2.0
 // @homepageURL  https://github.com/admin05/xiaoheihe
 // @updateURL    https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
 // @downloadURL  https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
@@ -30,7 +30,8 @@
         .hb-cpt__recent-hot-topic,
         .hb-view-download,
         .hb-view__platforms,
-        .hb-view__site-info {
+        .hb-view__site-info,
+        #page-bbs-community .content > .right {
             display: none !important;
             visibility: hidden !important;
             opacity: 0 !important;
@@ -45,10 +46,25 @@
 
         .hb-layout__main,
         .hb-website__container,
-        .hb-page__app {
+        .hb-page__app,
+        #page-bbs-community {
             padding: 0 8px !important;
             max-width: 100% !important;
             width: 100% !important;
+        }
+
+        #page-bbs-community .content {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+        #page-bbs-community .list,
+        #page-bbs-community .bbs-home__content-list {
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 0 !important;
+            margin: 0 !important;
         }
 
         .hb-layout-main__container--main,
@@ -62,14 +78,17 @@
 
         .hb-bbs-home,
         .hb-cpt__scroll-list,
-        .bbs-home__content-list {
+        .bbs-home__content-list,
+        #page-bbs-community .hb-bbs-home {
             width: 100% !important;
             max-width: 100% !important;
         }
 
         .hb-cpt__bbs-content,
         .hb-cpt__bbs-list-content,
-        .bbs-home__content-item {
+        .bbs-home__content-item,
+        #page-bbs-community .bbs-home__content-item,
+        #page-bbs-community .hb-cpt__bbs-list-content {
             padding: 10px 0 !important;
             margin-bottom: 0 !important;
             border-bottom: 1px solid #f0f0f0 !important;
@@ -278,6 +297,28 @@
             width: 100% !important;
         }
 
+        #page-bbs-community .bbs-home__topic-list {
+            height: 70px !important;
+            padding: 0 !important;
+        }
+
+        #page-bbs-community .bbs-home__topic-item {
+            width: 56px !important;
+            min-width: 56px !important;
+            margin-right: 12px !important;
+        }
+
+        #page-bbs-community .bbs-home__topic-item-icon {
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+        #app:has(#page-bbs-community) main {
+            max-width: none !important;
+            padding-right: 8px !important;
+            padding-left: 8px !important;
+        }
+
         .bbs-home__topic-list {
             height: 70px !important;
             padding: 0 !important;
@@ -453,7 +494,7 @@
 
     function optimizePosts() {
         const posts = document.querySelectorAll(
-            '.hb-cpt__bbs-content, .hb-cpt__bbs-list-content'
+            '.hb-cpt__bbs-content, .hb-cpt__bbs-list-content, #page-bbs-community .bbs-home__content-item'
         );
 
         posts.forEach(post => {
@@ -516,7 +557,7 @@
         );
 
         const rightSidebar = document.querySelector(
-            '.hb-layout__content--right'
+            '.hb-layout__content--right, #page-bbs-community .content > .right'
         );
 
         if (leftSidebar) {
@@ -543,7 +584,9 @@
                         node.querySelector?.('.hb-cpt__bbs-content') ||
                         node.querySelector?.('.hb-cpt__bbs-list-content') ||
                         node.classList?.contains('hb-layout-main__container--left') ||
-                        node.classList?.contains('hb-layout__content--right')
+                        node.classList?.contains('hb-layout__content--right') ||
+                        node.classList?.contains('right') ||
+                        node.classList?.contains('bbs-home__content-item')
                     )
                 ) {
                     hasNewContent = true;
@@ -573,6 +616,7 @@
     console.log(
         '[小黑盒优化] 高信息密度模式已启用：已删除两侧边栏 | 中等图片 | 一屏更多内容'
     );
+    document.documentElement.dataset.xhhDensityScript = '2.2.0';
         // 当前版本话题页布局优化
     const topicStyles = `
         #page-topic-link {
