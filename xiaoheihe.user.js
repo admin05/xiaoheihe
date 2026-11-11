@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小黑盒网页社区优化 - 高信息密度版
 // @namespace    http://tampermonkey.net/
-// @version      2.4.3
+// @version      2.4.4
 // @homepageURL  https://github.com/admin05/xiaoheihe
 // @updateURL    https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
 // @downloadURL  https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
@@ -358,6 +358,10 @@
         }
 
         #page-bbs-link {
+            --xhh-title-size: 26px;
+            --xhh-body-size: 20px;
+            --xhh-user-size: 17px;
+            --xhh-meta-size: 14px;
             width: 100% !important;
             max-width: none !important;
         }
@@ -399,12 +403,18 @@
             max-width: 1200px !important;
             margin-right: auto !important;
             margin-left: auto !important;
-            font-size: 22.5px !important;
+            font-size: var(--xhh-body-size) !important;
         }
 
-        #page-bbs-link .post__container .link-section-title {
-            font-size: 40px !important;
+        #page-bbs-link .link-section-title,
+        #page-bbs-link .link-section-title .section-title__content {
+            font-size: var(--xhh-title-size) !important;
             line-height: 1.45 !important;
+        }
+
+        #page-bbs-link .link-section-title .section-title__content :is(span, a, strong, b, em, i) {
+            font-size: inherit !important;
+            line-height: inherit !important;
         }
 
         #page-bbs-link .post__container .link-section-user,
@@ -415,7 +425,7 @@
         #page-bbs-link .post__container .link-tags__tag-item,
         #page-bbs-link .post__container .link-data__time,
         #page-bbs-link .post__container .link-data__ip {
-            font-size: 20px !important;
+            font-size: var(--xhh-user-size) !important;
         }
 
         /* ArticleKit 使用 hb-article，旧版编辑器与图文帖也使用同一正文大小。 */
@@ -426,7 +436,7 @@
         #page-bbs-link .post__content .hb-editor p,
         #page-bbs-link .post__content .hb-editor li,
         #page-bbs-link .image-text__content {
-            font-size: 24px !important;
+            font-size: var(--xhh-body-size) !important;
             line-height: 1.7 !important;
         }
 
@@ -439,12 +449,12 @@
         }
 
         #page-bbs-link .post__content .hb-article .main-title {
-            font-size: 28px !important;
+            font-size: 24px !important;
             line-height: 1.5 !important;
         }
 
         #page-bbs-link .post__content .hb-article .sub-title {
-            font-size: 26px !important;
+            font-size: 22px !important;
             line-height: 1.5 !important;
         }
 
@@ -452,11 +462,11 @@
         #page-bbs-link .link-comment .comment-item__content,
         #page-bbs-link .link-comment .comment-children-item,
         #page-bbs-link .link-comment .children-item__comment-content {
-            font-size: 24px !important;
+            font-size: var(--xhh-body-size) !important;
             line-height: 1.7 !important;
             overflow-wrap: anywhere !important;
-            --cube-length: 24px;
-            --heygirl-length: 24px;
+            --cube-length: var(--xhh-body-size);
+            --heygirl-length: var(--xhh-body-size);
         }
 
         #page-bbs-link .link-comment .comment-item__content :is(p, span, a, strong, b, em, i),
@@ -468,20 +478,20 @@
 
         #page-bbs-link .link-comment .info-box__username,
         #page-bbs-link .link-comment .children-item__comment-creator {
-            font-size: 20px !important;
+            font-size: var(--xhh-user-size) !important;
             line-height: 1.5 !important;
         }
 
         #page-bbs-link .link-comment .info-box__line-2,
         #page-bbs-link .link-comment .children-item__other-info {
-            font-size: 16px !important;
+            font-size: var(--xhh-meta-size) !important;
             line-height: 1.5 !important;
         }
 
         #page-bbs-link .link-comment .comment-children__load-all,
         #page-bbs-link .link-comment .load-all__text,
         #page-bbs-link .link-comment .like-box__cnt {
-            font-size: 18px !important;
+            font-size: 16px !important;
             line-height: 1.5 !important;
         }
 
@@ -788,7 +798,7 @@
     console.log(
         '[小黑盒优化] 高信息密度模式已启用：已删除两侧边栏 | 中等图片 | 一屏更多内容'
     );
-    document.documentElement.dataset.xhhDensityScript = '2.4.3';
+    document.documentElement.dataset.xhhDensityScript = '2.4.4';
         // 当前版本话题页布局优化
     const topicStyles = `
         #page-topic-link {
