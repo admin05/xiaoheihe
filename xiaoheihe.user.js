@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小黑盒网页社区优化 - 高信息密度版
 // @namespace    http://tampermonkey.net/
-// @version      2.4.1
+// @version      2.4.2
 // @homepageURL  https://github.com/admin05/xiaoheihe
 // @updateURL    https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
 // @downloadURL  https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
@@ -418,10 +418,34 @@
             font-size: 20px !important;
         }
 
-        #page-bbs-link .post__container .post__content .hb-editor p,
-        #page-bbs-link .post__container .post__content .hb-editor li {
-            font-size: 23.75px !important;
+        /* ArticleKit 使用 hb-article，旧版编辑器与图文帖也使用同一正文大小。 */
+        #page-bbs-link .post__content .hb-article .text,
+        #page-bbs-link .post__content .hb-article .order-line,
+        #page-bbs-link .post__content .hb-article .unorder-line,
+        #page-bbs-link .post__content .hb-article .blockquote,
+        #page-bbs-link .post__content .hb-editor p,
+        #page-bbs-link .post__content .hb-editor li,
+        #page-bbs-link .image-text__content {
+            font-size: 24px !important;
             line-height: 1.7 !important;
+        }
+
+        #page-bbs-link .post__content .hb-article .text :is(span, a, strong, b, em, i),
+        #page-bbs-link .post__content .hb-article .blockquote :is(p, li, span, a, strong, b, em, i),
+        #page-bbs-link .post__content .hb-editor :is(p, li) :is(span, a, strong, b, em, i),
+        #page-bbs-link .image-text__content :is(p, li, span, a, strong, b, em, i) {
+            font-size: inherit !important;
+            line-height: inherit !important;
+        }
+
+        #page-bbs-link .post__content .hb-article .main-title {
+            font-size: 28px !important;
+            line-height: 1.5 !important;
+        }
+
+        #page-bbs-link .post__content .hb-article .sub-title {
+            font-size: 26px !important;
+            line-height: 1.5 !important;
         }
 
         #app:has(#page-bbs-link) main {
@@ -727,7 +751,7 @@
     console.log(
         '[小黑盒优化] 高信息密度模式已启用：已删除两侧边栏 | 中等图片 | 一屏更多内容'
     );
-    document.documentElement.dataset.xhhDensityScript = '2.4.1';
+    document.documentElement.dataset.xhhDensityScript = '2.4.2';
         // 当前版本话题页布局优化
     const topicStyles = `
         #page-topic-link {
