@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小黑盒网页社区优化 - 高信息密度版
 // @namespace    http://tampermonkey.net/
-// @version      2.4.0
+// @version      2.4.1
 // @homepageURL  https://github.com/admin05/xiaoheihe
 // @updateURL    https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
 // @downloadURL  https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
@@ -46,11 +46,21 @@
 
         .hb-layout__main,
         .hb-website__container,
-        .hb-page__app,
-        #page-bbs-community {
+        .hb-page__app {
             padding: 0 8px !important;
             max-width: 100% !important;
             width: 100% !important;
+        }
+
+        /* 将搜索栏、社区图标和帖子列表作为同一列居中。 */
+        #page-bbs-community {
+            box-sizing: border-box !important;
+            width: 100% !important;
+            max-width: 1280px !important;
+            min-width: 0 !important;
+            margin-right: auto !important;
+            margin-left: auto !important;
+            padding: 0 8px !important;
         }
 
         #page-bbs-community .content {
@@ -717,7 +727,7 @@
     console.log(
         '[小黑盒优化] 高信息密度模式已启用：已删除两侧边栏 | 中等图片 | 一屏更多内容'
     );
-    document.documentElement.dataset.xhhDensityScript = '2.4.0';
+    document.documentElement.dataset.xhhDensityScript = '2.4.1';
         // 当前版本话题页布局优化
     const topicStyles = `
         #page-topic-link {
