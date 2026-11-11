@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小黑盒网页社区优化 - 高信息密度版
 // @namespace    http://tampermonkey.net/
-// @version      2.3.0
+// @version      2.4.0
 // @homepageURL  https://github.com/admin05/xiaoheihe
 // @updateURL    https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
 // @downloadURL  https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
@@ -320,31 +320,31 @@
         }
 
         #page-bbs-community .bbs-content__title {
-            font-size: 17px !important;
+            font-size: 21.25px !important;
         }
 
         #page-bbs-community .bbs-content__content {
-            font-size: 15px !important;
-            max-height: 45px !important;
+            font-size: 18.75px !important;
+            max-height: 56.25px !important;
         }
 
         #page-bbs-community .list-content__username {
-            font-size: 15px !important;
+            font-size: 18.75px !important;
         }
 
         #page-bbs-community .bbs-home__topic-name {
-            font-size: 12px !important;
+            font-size: 15px !important;
         }
 
         #page-bbs-community .content-tag-text,
         #page-bbs-community .content-list__tag-item {
-            font-size: 13px !important;
+            font-size: 16.25px !important;
         }
 
         #page-bbs-community .content-list__bottom--right,
         #page-bbs-community .content-list__comment-cnt,
         #page-bbs-community .content-list__like-cnt {
-            font-size: 14px !important;
+            font-size: 17.5px !important;
         }
 
         #page-bbs-link {
@@ -370,8 +370,18 @@
         #page-bbs-link .hb-bbs-link__container,
         #page-bbs-link .hb-bbs-link__content {
             width: 100% !important;
-            max-width: 100% !important;
             min-width: 0 !important;
+        }
+
+        #page-bbs-link .list {
+            max-width: 1280px !important;
+            margin-right: auto !important;
+            margin-left: auto !important;
+        }
+
+        #page-bbs-link .hb-bbs-link__container,
+        #page-bbs-link .hb-bbs-link__content {
+            max-width: 100% !important;
         }
 
         #page-bbs-link .post__container {
@@ -379,11 +389,11 @@
             max-width: 1200px !important;
             margin-right: auto !important;
             margin-left: auto !important;
-            font-size: 18px !important;
+            font-size: 22.5px !important;
         }
 
         #page-bbs-link .post__container .link-section-title {
-            font-size: 32px !important;
+            font-size: 40px !important;
             line-height: 1.45 !important;
         }
 
@@ -395,12 +405,12 @@
         #page-bbs-link .post__container .link-tags__tag-item,
         #page-bbs-link .post__container .link-data__time,
         #page-bbs-link .post__container .link-data__ip {
-            font-size: 16px !important;
+            font-size: 20px !important;
         }
 
         #page-bbs-link .post__container .post__content .hb-editor p,
         #page-bbs-link .post__container .post__content .hb-editor li {
-            font-size: 19px !important;
+            font-size: 23.75px !important;
             line-height: 1.7 !important;
         }
 
@@ -707,7 +717,7 @@
     console.log(
         '[小黑盒优化] 高信息密度模式已启用：已删除两侧边栏 | 中等图片 | 一屏更多内容'
     );
-    document.documentElement.dataset.xhhDensityScript = '2.3.0';
+    document.documentElement.dataset.xhhDensityScript = '2.4.0';
         // 当前版本话题页布局优化
     const topicStyles = `
         #page-topic-link {
