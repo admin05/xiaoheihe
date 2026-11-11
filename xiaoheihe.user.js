@@ -1,7 +1,10 @@
 // ==UserScript==
 // @name         小黑盒网页社区优化 - 高信息密度版
 // @namespace    http://tampermonkey.net/
-// @version      2.1
+// @version      2.1.1
+// @homepageURL  https://github.com/admin05/xiaoheihe
+// @updateURL    https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
+// @downloadURL  https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
 // @description  高信息密度布局：中等图片、紧凑排版、一屏更多帖子
 // @author       You
 // @match        https://xiaoheihe.cn/*
