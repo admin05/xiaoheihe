@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小黑盒网页社区优化 - 高信息密度版
 // @namespace    http://tampermonkey.net/
-// @version      2.4.2
+// @version      2.4.3
 // @homepageURL  https://github.com/admin05/xiaoheihe
 // @updateURL    https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
 // @downloadURL  https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
@@ -448,6 +448,43 @@
             line-height: 1.5 !important;
         }
 
+        /* 评论正文与文章正文保持一致，覆盖主评论和楼中楼。 */
+        #page-bbs-link .link-comment .comment-item__content,
+        #page-bbs-link .link-comment .comment-children-item,
+        #page-bbs-link .link-comment .children-item__comment-content {
+            font-size: 24px !important;
+            line-height: 1.7 !important;
+            overflow-wrap: anywhere !important;
+            --cube-length: 24px;
+            --heygirl-length: 24px;
+        }
+
+        #page-bbs-link .link-comment .comment-item__content :is(p, span, a, strong, b, em, i),
+        #page-bbs-link .link-comment .children-item__comment-content :is(p, span, a, strong, b, em, i),
+        #page-bbs-link .link-comment .children-item__reply-to {
+            font-size: inherit !important;
+            line-height: inherit !important;
+        }
+
+        #page-bbs-link .link-comment .info-box__username,
+        #page-bbs-link .link-comment .children-item__comment-creator {
+            font-size: 20px !important;
+            line-height: 1.5 !important;
+        }
+
+        #page-bbs-link .link-comment .info-box__line-2,
+        #page-bbs-link .link-comment .children-item__other-info {
+            font-size: 16px !important;
+            line-height: 1.5 !important;
+        }
+
+        #page-bbs-link .link-comment .comment-children__load-all,
+        #page-bbs-link .link-comment .load-all__text,
+        #page-bbs-link .link-comment .like-box__cnt {
+            font-size: 18px !important;
+            line-height: 1.5 !important;
+        }
+
         #app:has(#page-bbs-link) main {
             max-width: none !important;
             padding-right: 8px !important;
@@ -751,7 +788,7 @@
     console.log(
         '[小黑盒优化] 高信息密度模式已启用：已删除两侧边栏 | 中等图片 | 一屏更多内容'
     );
-    document.documentElement.dataset.xhhDensityScript = '2.4.2';
+    document.documentElement.dataset.xhhDensityScript = '2.4.3';
         // 当前版本话题页布局优化
     const topicStyles = `
         #page-topic-link {
