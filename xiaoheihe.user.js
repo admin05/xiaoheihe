@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小黑盒网页社区优化 - 高信息密度版
 // @namespace    http://tampermonkey.net/
-// @version      2.4.6
+// @version      2.4.7
 // @homepageURL  https://github.com/admin05/xiaoheihe
 // @updateURL    https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
 // @downloadURL  https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
@@ -496,7 +496,7 @@
         }
 
         #page-bbs-link .link-comment .children-item__comment-content {
-            flex: 1 1 auto !important;
+            flex: 0 1 auto !important;
             min-width: 0 !important;
         }
 
