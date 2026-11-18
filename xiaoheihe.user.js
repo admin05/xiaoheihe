@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         小黑盒网页社区优化 - 高信息密度版
 // @namespace    http://tampermonkey.net/
-// @version      2.4.5
+// @version      2.4.6
 // @homepageURL  https://github.com/admin05/xiaoheihe
 // @updateURL    https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
 // @downloadURL  https://raw.githubusercontent.com/admin05/xiaoheihe/main/xiaoheihe.user.js
@@ -469,6 +469,13 @@
             --heygirl-length: var(--xhh-body-size);
         }
 
+        #page-bbs-link .link-comment .comment-children-item {
+            display: flex !important;
+            align-items: baseline !important;
+            column-gap: 6px !important;
+            min-width: 0 !important;
+        }
+
         #page-bbs-link .link-comment .comment-item__content :is(p, span, a, strong, b, em, i),
         #page-bbs-link .link-comment .children-item__comment-content :is(p, span, a, strong, b, em, i),
         #page-bbs-link .link-comment .children-item__reply-to {
@@ -482,6 +489,17 @@
             line-height: 1.5 !important;
         }
 
+        #page-bbs-link .link-comment .children-item__comment-creator,
+        #page-bbs-link .link-comment .children-item__reply-to {
+            flex: 0 0 auto !important;
+            white-space: nowrap !important;
+        }
+
+        #page-bbs-link .link-comment .children-item__comment-content {
+            flex: 1 1 auto !important;
+            min-width: 0 !important;
+        }
+
         #page-bbs-link .link-comment .info-box__line-2,
         #page-bbs-link .link-comment .children-item__other-info {
             font-size: var(--xhh-meta-size) !important;
@@ -489,8 +507,8 @@
         }
 
         #page-bbs-link .link-comment .children-item__other-info {
-            display: block !important;
-            margin-top: 4px !important;
+            flex: 0 0 auto !important;
+            white-space: nowrap !important;
         }
 
         #page-bbs-link .link-comment .comment-children__load-all,
